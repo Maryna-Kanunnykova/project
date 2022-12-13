@@ -8,7 +8,6 @@ const elem = (
   <div>
   <h1> {text}</h1>
   <input type="text" />
-  <button>Кнопка</button>
   <button>вторая   кнопка</button>
   </div>
   
