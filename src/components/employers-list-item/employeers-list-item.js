@@ -1,19 +1,33 @@
 
 import './employeers-list-item.css'
 
-const EmployeersListItem = () => {
+const EmployeersListItem = (props) => {
+
+    const {name, salary, onDelete, onToggleProp, increase, like} = props;
+
+    let classNames = "list-group-item d-flex justify-content-between"
+    if(increase) {
+        classNames += " increase";
+    }
+    if(like) {
+        classNames += " like"
+    }
+
     return (
-        <li className="list-group-item d-flex justify-content-between">
-            <span className="list-group-item-label">Vasya Pupkin</span>
-            <input type="text" className="list-group-item-input" defaultValue="1000$"/>
+        <li className={classNames}>
+            <span className="list-group-item-label" onClick={onToggleProp} data-toggle="like">{name}</span>
+            <input type="text" className="list-group-item-input" defaultValue={salary + "$"}/>
             <div className="d-flex justify-content-center aling-item-center">
                 <button type="button"
-                    className="btn-cookie btn-sm">
+                    className="btn-cookie btn-sm"
+                    onClick={onToggleProp}
+                    data-toggle="increase">
                     <i className="fas fa-cookie"></i>
                 </button>
 
                 <button type="button"
-                className="btn-trash btn-sm">
+                className="btn-trash btn-sm"
+                onClick={onDelete}>
                     <i className="fas fa-trash"></i>
                 </button>
                 <i className="fas fa-star"></i>
@@ -21,6 +35,5 @@ const EmployeersListItem = () => {
         </li>
     )
 }
-
 
 export default EmployeersListItem;
